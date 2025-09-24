@@ -1,4 +1,4 @@
-using Flax.Build;
+﻿using Flax.Build;
 
 public class SimpleCoroutinesEditorTarget : GameProjectEditorTarget
 {
@@ -9,5 +9,5 @@ public class SimpleCoroutinesEditorTarget : GameProjectEditorTarget
 
         // Reference the modules for editor
         Modules.Add("SimpleCoroutines");
-            }
+    }
 }
