@@ -100,7 +100,10 @@ public class CoroutineSystem : GamePlugin
             if (instance.Coroutine.Current == null)
             {
                 if (!instance.Coroutine.MoveNext())
+                {
                     _activeCoroutines.RemoveAt(i);
+                    continue;
+                }
             }
 
             // Check coroutine Step to see if can move to next instruction.
