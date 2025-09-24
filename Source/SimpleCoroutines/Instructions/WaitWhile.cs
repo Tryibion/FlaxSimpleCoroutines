@@ -17,6 +17,6 @@ public struct WaitWhile : IYieldInstruction
     /// <inheritdoc />
     public bool Step(float deltaTime)
     {
-        return _predicate();
+        return !_predicate();
     }
 }
