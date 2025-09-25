@@ -66,10 +66,7 @@ public class CoroutineSystem : GamePlugin
         for (int i = _activeCoroutines.Count - 1; i >= 0; i--)
         {
             if (Equals(_activeCoroutines[i].Owner, owner))
-            {
                 _activeCoroutines.RemoveAt(i);
-                return;
-            }
         }
     }
     
