@@ -15,7 +15,7 @@ To add this plugin project to your game, follow the instructions in the [Flax En
 - `SimpleCoroutine` - a static class used to interact with he ccoroutine system.
 
 ## Built in Yield Instructions
-- `WaitForSecnds` - waits a defined number of seconds before continuing.
+- `WaitForSeconds` - waits a defined number of seconds before continuing.
 - `WaiForFrames` - waits for a defined number of frames before continuing.
 - `WaitForNextFrame` - similar to `yield return null` and waits to continue until the next frame.
 - `WaitUntil` - waits until the passed in Func returns true before continuing.
