@@ -38,7 +38,7 @@ This plugin contains a simple way to execute a method after a certain amount of 
 ```csharp
 void OnStart()
 {
-    SimpleCoroutine.Invoke(MetodCalledIn5Seconds, 5, this);
+    SimpleCoroutine.Invoke(MethodCalledIn5Seconds, 5, this);
 }
 
 void MethodCalledIn5Seconds()
