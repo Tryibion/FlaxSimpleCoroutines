@@ -23,6 +23,19 @@ public static class SimpleCoroutine
     }
     
     /// <summary>
+    /// Invokes a function after a specified number of seconds
+    /// </summary>
+    /// <param name="function">The function to invoke.</param>
+    /// <param name="seconds">The number of seconds to wait.</param>
+    /// <param name="owner">The owner of this invocation.</param>
+    /// <param name="timeScaleIndependent">Whether to use the time scale or not.</param>
+    /// <returns>The coroutine that is handling this invocation.</returns>
+    public static IEnumerator Invoke(Action function, float seconds, object owner, bool timeScaleIndependent = false)
+    {
+        return _system.Invoke(function, seconds, owner, timeScaleIndependent);
+    }
+    
+    /// <summary>
     /// Starts a new coroutine.
     /// </summary>
     /// <param name="coroutine">The IEnumerator to start.</param>

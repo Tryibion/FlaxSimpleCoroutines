@@ -20,6 +20,28 @@ public class CoroutineSystem : GamePlugin
         SimpleCoroutine.Initialize(this);
         Scripting.Update += Update;
     }
+
+    /// <summary>
+    /// Invokes a function after a specified number of seconds
+    /// </summary>
+    /// <param name="function">The function to invoke.</param>
+    /// <param name="seconds">The number of seconds to wait.</param>
+    /// <param name="owner">The owner of this invocation.</param>
+    /// <param name="timeScaleIndependent">Whether to use the time scale or not.</param>
+    /// <returns>The coroutine that is handling this invocation.</returns>
+    public IEnumerator Invoke(Action function, float seconds, object owner, bool timeScaleIndependent = false)
+    {
+        IEnumerator routine = InvokeCoroutine(function, seconds, timeScaleIndependent);
+        StartCoroutine(routine, owner);
+        return routine;
+    }
+
+    // Used with the `Invoke` method to wait a specified time before function call.
+    private IEnumerator InvokeCoroutine(Action function, float seconds, bool timeScaleIndependent = false)
+    {
+        yield return new WaitForSeconds(seconds, timeScaleIndependent);
+        function();
+    }
     
     /// <summary>
     /// Starts a new coroutine.
