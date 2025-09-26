@@ -50,7 +50,10 @@ public class CoroutineSystem : GamePlugin
     /// <param name="owner">The owner of the coroutine. Generally a script or an actor.</param>
     public void StartCoroutine(IEnumerator coroutine, object owner)
     {
-        _activeCoroutines.Add(new CoroutineHandle(coroutine, owner));
+        // Create and start coroutine.
+        var handle = new CoroutineHandle(coroutine, owner);
+        handle.Coroutine.MoveNext();
+        _activeCoroutines.Add(handle);
     }
     
     /// <summary>
@@ -114,25 +117,24 @@ public class CoroutineSystem : GamePlugin
                 _activeCoroutines.RemoveAt(i);
                 continue;
             }
-
-            // If coroutine is started but not at next instruction, move to next instruction.
-            if (instance.Coroutine.Current == null)
+            
+            var currentElement = instance.Coroutine.Current;
+            // Check coroutine Step to see if can move to next instruction.
+            if (currentElement is IYieldInstruction instruction)
+            {
+                if (!instruction.Step(Time.DeltaTime))
+                    continue;
+                if (!instance.Coroutine.MoveNext())
+                    _activeCoroutines.RemoveAt(i);
+            }
+            // Check if can move to next if null is current element.
+            else if (currentElement == null)
             {
                 if (!instance.Coroutine.MoveNext())
                 {
                     _activeCoroutines.RemoveAt(i);
                     continue;
                 }
-            }
-
-            // Check coroutine Step to see if can move to next instruction.
-            if (instance.Coroutine.Current is IYieldInstruction instruction)
-            {
-                instance.CurrentInstruction = instruction;
-                if (!instruction.Step(Time.DeltaTime))
-                    continue;
-                if (!instance.Coroutine.MoveNext())
-                    _activeCoroutines.RemoveAt(i);
             }
         }
         Profiler.EndEvent();

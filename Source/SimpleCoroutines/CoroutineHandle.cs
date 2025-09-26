@@ -7,13 +7,11 @@ namespace SimpleCoroutines;
 public struct CoroutineHandle
 {
     public IEnumerator Coroutine;
-    public IYieldInstruction CurrentInstruction;
     public object Owner;
 
     public CoroutineHandle(IEnumerator coroutine, Object owner)
     {
         Coroutine = coroutine;
-        CurrentInstruction = null;
         Owner = owner;
     }
 }
