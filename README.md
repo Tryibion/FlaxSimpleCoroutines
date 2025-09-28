@@ -12,6 +12,7 @@ To add this plugin project to your game, follow the instructions in the [Flax En
 3. Use the `SimpleCoroutine` static class to start and stop coroutines.
 
 ## Examples
+All of these example are ran from a `Script`.
 
 ### WaitForSeconds
 This example shows a simple way to wait 5 seconds in a coroutine method.
@@ -69,7 +70,7 @@ IEnumerator MyCoroutine()
 ```
 
 ## Important classes
-- `SimpleCoroutine` - a static class used to interact with the ccoroutine system.
+- `SimpleCoroutine` - a static class used to interact with the coroutine system.
 
 ## Built in Yield Instructions
 - `WaitForSeconds` - waits a defined number of seconds before continuing.
