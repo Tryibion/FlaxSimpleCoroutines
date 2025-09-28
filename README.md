@@ -18,7 +18,7 @@ This example shows a simple way to wait 5 seconds in a coroutine method.
 
 ```csharp
 // Starting the coroutine.
-void OnStart()
+void override OnStart()
 {
     SimpleCoroutine.StartCoroutine(MyCoroutine(), this);
 }
@@ -36,7 +36,7 @@ IEnumerator MyCoroutine()
 This plugin contains a simple way to execute a method after a certain amount of time using the `Invoke` method. Here is an example of how to use it.
 
 ```csharp
-void OnStart()
+void override OnStart()
 {
     SimpleCoroutine.Invoke(MethodCalledIn5Seconds, 5, this);
 }
@@ -55,7 +55,7 @@ This example waits until a specific member variable boolean is true before conti
 private bool ThisNeedsToBeTrueToContinue = false;
 
 // Starting the coroutine.
-void OnStart()
+void override OnStart()
 {
     SimpleCoroutine.StartCoroutine(MyCoroutine(), this);
 }
@@ -69,11 +69,11 @@ IEnumerator MyCoroutine()
 ```
 
 ## Important classes
-- `SimpleCoroutine` - a static class used to interact with he ccoroutine system.
+- `SimpleCoroutine` - a static class used to interact with the ccoroutine system.
 
 ## Built in Yield Instructions
 - `WaitForSeconds` - waits a defined number of seconds before continuing.
-- `WaiForFrames` - waits for a defined number of frames before continuing.
+- `WaiForFrames` - waits a defined number of frames before continuing.
 - `WaitForNextFrame` - similar to `yield return null` and waits to continue until the next frame.
 - `WaitUntil` - waits until the passed in Func returns true before continuing.
 - `WaitWhile` - waits until the passed in Func returns false before continuing.
